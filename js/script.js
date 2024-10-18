@@ -3,6 +3,7 @@ const navLinks = document.querySelectorAll('.nav_link');
 const logoImg = document.getElementById('Logo-img'); 
 let isDarkMode = false; 
 
+
 toggleButton.addEventListener('click', function() {
     if (isDarkMode) {
         document.body.style.backgroundColor = '#f4f8ff'; 
@@ -31,67 +32,58 @@ toggleButton.addEventListener('click', function() {
         logoImg.src = '../assets/Logo_dark.png'; 
     }
     isDarkMode = !isDarkMode; 
+});
 
+// Carousel functionality
+let currentIndex = 0;
+const items = document.querySelectorAll('.carousel-item');
+const totalItems = items.length;
 
+function showNextItem() {
+    items[currentIndex].classList.remove('active'); 
+    currentIndex = (currentIndex + 1) % totalItems; 
+    items[currentIndex].classList.add('active'); 
+}
 
+// Start the carousel
+setInterval(showNextItem, 3000);
 
-    let currentIndex = 0;
-    const items = document.querySelectorAll('.carousel-item');
-    const totalItems = items.length;
-    
-    function showNextItem() {
-        items[currentIndex].classList.remove('active')};
-        currentIndex = (currentIndex + 1) % totalItems;
-        items[currentIndex].classList.add('active');
+// Smooth scroll to section
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.scrollIntoView({ behavior: 'smooth' }); 
+}
 
-    
-    setInterval(showNextItem, 3000);
+let navVisible = true; 
+function toggleNav() {
+    const navButtons = document.querySelector('.nav-buttons');
+    navVisible = !navVisible; 
 
-
-
-    function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        section.scrollIntoView({ behavior: 'smooth' }); 
+    if (navVisible) {
+        navButtons.classList.remove('hidden'); 
+    } else {
+        navButtons.classList.add('hidden'); 
     }
+}
 
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
 
-
-    
-    let navVisible = true; 
-
-    function toggleNav() {
-        const navButtons = document.querySelector('.nav-buttons');
-        navVisible = !navVisible; 
-    
-        if (navVisible) {
-            navButtons.classList.remove('hidden'); 
-        } else {
-            navButtons.classList.add('hidden'); 
+    const formData = new FormData(this);
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
         }
-    }
-    
-    function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        section.scrollIntoView({ behavior: 'smooth' }); 
-    }
-
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-    
-        const formData = new FormData(this);
-        fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                alert('Mensaje enviado correctamente!');
-                this.reset();
-            } else {
-                alert('Error al enviar el mensaje.');
-            }
-        }).catch(error => {
+    }).then(response => {
+        if (response.ok) {
+            alert('Mensaje enviado correctamente!');
+            this.reset();
+        } else {
             alert('Error al enviar el mensaje.');
-        })})})
+        }
+    }).catch(error => {
+        alert('Error al enviar el mensaje.');
+    });
+});
