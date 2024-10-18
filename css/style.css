@@ -299,6 +299,7 @@ body{
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 1px;
 }
 
 .nav-button:hover {
@@ -338,7 +339,7 @@ body{
 
 #contact label {
     font-size: 1rem;
-    color: #667191;
+    color: #96a0be;
 }
 
 #contact input, #contact textarea {
@@ -361,3 +362,54 @@ body{
 #contact button:hover {
     background-color: #657296;
 }
+
+.p{
+    color: #ccc;
+    margin: 10px;
+    font-size: 14px;
+}
+
+.footer-text{
+    color: #6d727e;
+}
+
+.footer_content{
+    background-color: #333; 
+    padding: 20px;
+    text-align: center;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    font-size: 24px;
+    transition: transform 0.3s, color 0.3s;
+}
+  
+.social-icons a:hover {
+    color: #acade6;
+    transform: scale(1.2); 
+}
+  
+.social-icons a:active {
+transform: scale(0.9); 
+}
+
+
+
+@keyframes floating {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .social-icons a:hover {
+    color: #6984f0;
+    transform: scale(1.2);
+    animation: floating 1s ease-in-out infinite; 
+  }
+  
