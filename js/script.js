@@ -1,41 +1,36 @@
 const toggleButton = document.getElementById('toggle-btn');
-const navLinks = document.querySelectorAll('.nav_link'); // Seleccionamos todos los enlaces
-const logoImg = document.getElementById('Logo-img'); // Seleccionamos la imagen del logo
-let isDarkMode = false; // Variable para rastrear el estado del fondo
+const navLinks = document.querySelectorAll('.nav_link'); 
+const logoImg = document.getElementById('Logo-img'); 
+let isDarkMode = false; 
 
 toggleButton.addEventListener('click', function() {
     if (isDarkMode) {
-        document.body.style.backgroundColor = '#f4f8ff'; // Cambia a fondo blanco
-        document.body.style.color = '#21252c'; // Cambia el color del texto a negro
+        document.body.style.backgroundColor = '#f4f8ff'; 
+        document.body.style.color = '#21252c'; 
         
-        toggleButton.style.backgroundColor = '#485066'; // Cambia el color del botón
-        toggleButton.style.color = 'white'; // Cambia el texto del botón
+        toggleButton.style.backgroundColor = '#485066'; 
+        toggleButton.style.color = 'white'; 
 
-        // Cambia el color de los links a negro
         navLinks.forEach(link => {
             link.style.color = 'black';
         });
 
-        // Cambia el logo al modo claro
-        logoImg.src = '../assets/Logo_light.png'; // Cambia al logo claro
+        logoImg.src = '../assets/Logo_light.png'; 
 
     } else {
-        document.body.style.backgroundColor = '#232a35'; // Cambia a fondo negro
-        document.body.style.color = '#d0e1fc'; // Cambia el color del texto a blanco
+        document.body.style.backgroundColor = '#232a35'; 
+        document.body.style.color = '#d0e1fc'; 
         
-        toggleButton.style.backgroundColor = 'white'; // Cambia el color del botón
-        toggleButton.style.color = 'black'; // Cambia el texto del botón
+        toggleButton.style.backgroundColor = 'white'; 
+        toggleButton.style.color = 'black'; 
 
-        // Cambia el color de los links a blanco
         navLinks.forEach(link => {
             link.style.color = 'white';
         });
 
-        // Cambia el logo al modo oscuro
-        logoImg.src = '../assets/Logo_dark.png'; // Cambia al logo oscuro
+        logoImg.src = '../assets/Logo_dark.png'; 
     }
-    isDarkMode = !isDarkMode; // Alterna entre negro y blanco
-});
+    isDarkMode = !isDarkMode; 
 
 
 
@@ -56,32 +51,32 @@ toggleButton.addEventListener('click', function() {
 
     function scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
-        section.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave a la sección
+        section.scrollIntoView({ behavior: 'smooth' }); 
     }
 
 
 
     
-    let navVisible = true; // Variable para rastrear la visibilidad de los botones de navegación
+    let navVisible = true; 
 
     function toggleNav() {
         const navButtons = document.querySelector('.nav-buttons');
-        navVisible = !navVisible; // Cambia el estado de visibilidad
+        navVisible = !navVisible; 
     
         if (navVisible) {
-            navButtons.classList.remove('hidden'); // Muestra los botones
+            navButtons.classList.remove('hidden'); 
         } else {
-            navButtons.classList.add('hidden'); // Oculta los botones
+            navButtons.classList.add('hidden'); 
         }
     }
     
     function scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
-        section.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave a la sección
+        section.scrollIntoView({ behavior: 'smooth' }); 
     }
 
     document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita el envío por defecto
+        event.preventDefault(); 
     
         const formData = new FormData(this);
         fetch(this.action, {
@@ -93,11 +88,10 @@ toggleButton.addEventListener('click', function() {
         }).then(response => {
             if (response.ok) {
                 alert('Mensaje enviado correctamente!');
-                this.reset(); // Limpia el formulario
+                this.reset();
             } else {
                 alert('Error al enviar el mensaje.');
             }
         }).catch(error => {
             alert('Error al enviar el mensaje.');
-        });
-    });
+        })})})
